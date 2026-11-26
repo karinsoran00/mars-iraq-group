@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MARS Iraq Group · Kurdistan Region</title>
+    <meta name="description" content="MARS Iraq Group, established in 2007 in the Kurdistan Region of Iraq. Oil transportation and distribution, import and export of petroleum products, Karos Petroleum fuel stations, and construction at Nova City in Sulaymaniyah." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23C12B03' d='M32 4C32 4 10 30 10 42a22 22 0 0 0 44 0C54 30 32 4 32 4z'/%3E%3Cpath fill='%23141210' d='M24 40c2 8 8 14 14 12 2-6-2-14-8-20-2 4-6 6-6 8z'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: "#141210",
+                        paper: "#ffffff",
+                        sand: "#f4efe8",
+                        rust: "#C12B03",
+                        gold: "#C8960A"
+                    },
+                    fontFamily: {
+                        display: ["Archivo", "sans-serif"],
+                        sans: ["Outfit", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        #about, #companies, #work, #contact { scroll-margin-top: 5.5rem; }
+        body { background: #ffffff; }
+        #topbar { transition: background-color .2s, border-color .2s, box-shadow .2s; }
+        .nav-solid { background: rgba(255,255,255,.94); backdrop-filter: blur(16px); border-color: rgba(20,18,16,.08); box-shadow: 0 1px 0 rgba(20,18,16,.04); }
+        .reveal { opacity: 0; transform: translateY(16px); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+        .reveal-2 { animation-delay: .12s; }
+        .reveal-3 { animation-delay: .22s; }
+        @keyframes rise { to { opacity: 1; transform: none; } }
+        .rise { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+        .rise.in { opacity: 1; transform: none; }
+        #intro {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            display: grid;
+            place-items: center;
+            background: #fff;
+            animation: intro-leave .45s ease 1.35s forwards;
+        }
+        #intro img { width: min(78vw, 440px); height: auto; animation: intro-in .7s cubic-bezier(.2,.7,.2,1) both; }
+        @keyframes intro-in { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+        @keyframes intro-leave { to { opacity: 0; visibility: hidden; } }
+        #lightbox { border: 0; padding: 0; background: rgba(20,18,16,.96); max-width: none; max-height: none; width: 100%; height: 100%; }
+        #lightbox::backdrop { background: rgba(20,18,16,.96); }
+        #light-cap { background: #141210; padding: 0.35rem 0.7rem; }
+        #lightbox img { max-height: min(82vh, 900px); }
+        .filter-on { background: #141210; color: #fff; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal, .rise { opacity: 1; transform: none; animation: none; transition: none; }
+            #intro { display: none; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MARS Iraq Group",
+        "foundingDate": "2007",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Sulaymaniyah",
+            "addressRegion": "Kurdistan Region",
+            "addressCountry": "IQ"
+        },
+        "telephone": "+9647725118040",
+        "brand": { "@type": "Brand", "name": "Karos Petroleum" }
+    }
+    </script>
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+    <div id="intro" aria-hidden="true">
+        <img src="images/mars-logo.jpg" alt="" />
+    </div>
+    <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-ink focus:px-3 focus:py-2 focus:text-paper" href="#top">Skip to content</a>
+
+    <header id="topbar" class="fixed inset-x-0 top-0 z-40 border-b border-ink/10 bg-paper">
+        <div class="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-5">
+            <a href="#top" class="shrink-0" aria-label="MARS Iraq Group">
+                <img src="images/mars-logo.jpg" alt="" class="h-11 w-auto sm:h-12" />
+            </a>
+            <nav class="hidden items-center gap-8 text-[15px] text-ink/70 md:flex" aria-label="Page">
+                <a class="hover:text-ink" href="#about">About</a>
+                <a class="hover:text-ink" href="#companies">Companies</a>
+                <a class="hover:text-ink" href="#work">Work</a>
+                <a class="hover:text-ink" href="#contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a class="hidden border border-ink px-4 py-2.5 text-xs font-medium uppercase tracking-[0.16em] hover:bg-ink hover:text-paper sm:inline-block" href="tel:+9647725118040">Call</a>
+                <button id="menu-btn" type="button" class="grid h-11 w-11 place-items-center border border-ink/15 md:hidden" aria-expanded="false" aria-controls="menu">
+                    <span class="sr-only">Menu</span>
+                    <span class="block h-px w-4 bg-ink"></span>
+                    <span class="mt-1.5 block h-px w-4 bg-ink"></span>
+                </button>
+            </div>
+        </div>
+        <div id="menu" class="hidden border-t border-ink/10 bg-paper md:hidden">
+            <div class="flex flex-col px-5 py-4 text-lg">
+                <a class="py-2" href="#about">About</a>
+                <a class="py-2" href="#companies">Companies</a>
+                <a class="py-2" href="#work">Work</a>
+                <a class="py-2" href="#contact">Contact</a>
+                <a class="mt-2 text-rust" href="tel:+9647725118040">Call</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="grid min-h-[100svh] lg:grid-cols-2">
+            <div class="flex flex-col justify-end px-5 pb-12 pt-32 sm:px-8 sm:pb-16 lg:px-12 lg:pb-20">
+                <p class="reveal text-sm uppercase tracking-[0.28em] text-rust">Kurdistan Region of Iraq · Since 2007</p>
+                <h1 class="reveal reveal-2 mt-5 max-w-xl font-display text-5xl font-extrabold leading-[0.92] tracking-[-0.03em] sm:text-6xl">Oil and petroleum, across Iraq.</h1>
+                <p class="reveal reveal-3 mt-6 max-w-md text-lg leading-relaxed text-ink/70">MARS Iraq Group moves petroleum products, imports and exports them, and runs fuel stations through Karos Petroleum. The work starts in the Kurdistan Region and continues across the country.</p>
+                <div class="reveal reveal-3 mt-8 flex flex-wrap gap-3">
+                    <a class="bg-rust px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-white hover:bg-ink" href="#companies">The companies</a>
+                    <a class="border border-ink/20 px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] hover:border-ink" href="#work">Karos station</a>
+                </div>
+            </div>
+            <div class="relative min-h-[70vw] lg:min-h-full">
+                <img src="images/facade.jpg" alt="Karos Petroleum station in Sulaymaniyah, concrete facade with the gold mark" class="absolute inset-0 h-full w-full object-cover object-center" />
+            </div>
+        </section>
+
+        <section class="border-y border-ink/10">
+            <div class="mx-auto grid max-w-6xl sm:grid-cols-3">
+                <p class="border-ink/10 px-5 py-6 text-sm leading-6 sm:px-8 sm:py-8 lg:border-r"><span class="block font-display text-lg font-bold">2007</span>Established in the Kurdistan Region of Iraq.</p>
+                <p class="border-t border-ink/10 px-5 py-6 text-sm leading-6 sm:border-t-0 sm:px-8 sm:py-8 lg:border-r"><span class="block font-display text-lg font-bold">Karos Petroleum</span>The group’s fuel stations, in Sulaymaniyah.</p>
+                <p class="border-t border-ink/10 px-5 py-6 text-sm leading-6 sm:border-t-0 sm:px-8 sm:py-8"><span class="block font-display text-lg font-bold">Nova City</span>Construction in Sulaymaniyah, on Malik Mahmud Ring Road.</p>
+            </div>
+        </section>
+
+        <section id="about" class="bg-sand">
+            <div class="rise mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-28">
+                <div class="md:col-span-4">
+                    <p class="text-sm uppercase tracking-[0.28em] text-rust">About MARS</p>
+                    <h2 class="mt-4 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">An Iraqi company, rooted in the Kurdistan Region.</h2>
+                </div>
+                <div class="space-y-6 text-lg leading-relaxed text-ink/80 md:col-span-8">
+                    <p>Established in 2007 in the Kurdistan Region of Iraq, MARS is an Iraqi company with a broad presence in the oil and petroleum products sector. The company’s activities span oil transportation and distribution, the import and export of petroleum products, and the operation of a chain of fuel stations.</p>
+                    <p>With experience across multiple areas of the petroleum supply chain, MARS is involved in oil projects throughout the Kurdistan Region and the rest of Iraq. Its work connects the transportation and movement of oil products with their distribution and availability to the market. Through its diverse activities, the company serves commercial partners and customers across Iraq’s energy sector.</p>
+                    <p>Since its establishment, MARS has continued to build its role in Iraq’s oil industry, combining its regional roots with operations that extend across the country.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="companies" class="bg-paper">
+            <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
+                <div class="rise">
+                    <p class="text-sm uppercase tracking-[0.28em] text-rust">Companies</p>
+                    <h2 class="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">Three companies, one group.</h2>
+                </div>
+                <div class="mt-12 grid gap-5 lg:grid-cols-3">
+                    <article class="rise rise-2 flex flex-col border border-ink/10">
+                        <img src="images/street.jpg" alt="Karos Petroleum station seen from the road in Sulaymaniyah" class="aspect-[4/3] w-full object-cover" />
+                        <div class="flex flex-1 flex-col p-6 sm:p-7">
+                            <p class="text-xs font-medium uppercase tracking-[0.2em] text-gold">Fuel stations</p>
+                            <h3 class="mt-3 font-display text-3xl font-extrabold tracking-tight">Karos Petroleum</h3>
+                            <p class="mt-3 leading-relaxed text-ink/70">A company of MARS Iraq Group. Karos runs the fuel station in Sulaymaniyah: petrol, diesel, LPG, and the services beside the pumps.</p>
+                            <ul class="mt-5 flex flex-wrap gap-2 text-xs uppercase tracking-[0.12em]">
+                                <li class="border border-ink/15 px-2.5 py-1">Super</li>
+                                <li class="border border-ink/15 px-2.5 py-1">Muhasan</li>
+                                <li class="border border-ink/15 px-2.5 py-1">Normal</li>
+                                <li class="border border-ink/15 px-2.5 py-1">Diesel</li>
+                                <li class="border border-ink/15 px-2.5 py-1">LPG</li>
+                                <li class="border border-ink/15 px-2.5 py-1">Car wash</li>
+                                <li class="border border-ink/15 px-2.5 py-1">Car service</li>
+                                <li class="border border-ink/15 px-2.5 py-1">Karos Market</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="rise flex flex-col border border-ink/10">
+                        <div class="grid aspect-[4/3] place-items-end bg-ink p-6 text-paper">
+                            <p class="font-display text-4xl font-extrabold leading-none tracking-tight">Oil and commodities</p>
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-7">
+                            <p class="text-xs font-medium uppercase tracking-[0.2em] text-rust">Supply</p>
+                            <h3 class="mt-3 font-display text-3xl font-extrabold tracking-tight">Transport, import, and export</h3>
+                            <p class="mt-3 leading-relaxed text-ink/70">Transportation and distribution of oil products, and the import and export of petroleum products. The work connects that movement with availability to the market, for commercial partners across Iraq’s energy sector.</p>
+                        </div>
+                    </article>
+                    <article class="rise flex flex-col border border-ink/10">
+                        <div class="grid aspect-[4/3] place-items-end bg-sand p-6">
+                            <p class="font-display text-4xl font-extrabold leading-none tracking-tight">Nova City</p>
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-7">
+                            <p class="text-xs font-medium uppercase tracking-[0.2em] text-rust">Construction</p>
+                            <h3 class="mt-3 font-display text-3xl font-extrabold tracking-tight">Sulaymaniyah</h3>
+                            <p class="mt-3 leading-relaxed text-ink/70">Construction at Nova City, a private residential compound on Malik Mahmud Ring Road, near the Zargata underpass.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="bg-sand">
+            <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
+                <div class="rise flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                        <p class="text-sm uppercase tracking-[0.28em] text-rust">Work</p>
+                        <h2 class="mt-4 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">The collection</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by company">
+                        <button type="button" data-filter="all" class="filter-on px-4 py-2 text-xs font-medium uppercase tracking-[0.14em]" aria-pressed="true">All</button>
+                        <button type="button" data-filter="karos" class="border border-ink/15 bg-paper px-4 py-2 text-xs font-medium uppercase tracking-[0.14em]" aria-pressed="false">Karos</button>
+                        <button type="button" data-filter="oil" class="border border-ink/15 bg-paper px-4 py-2 text-xs font-medium uppercase tracking-[0.14em]" aria-pressed="false">Oil</button>
+                        <button type="button" data-filter="construction" class="border border-ink/15 bg-paper px-4 py-2 text-xs font-medium uppercase tracking-[0.14em]" aria-pressed="false">Construction</button>
+                    </div>
+                </div>
+                <div id="gallery" class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The station mark">
+                        <img src="images/facade.jpg" alt="Concrete facade of the Karos Petroleum station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </button>
+                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="From the road">
+                        <img src="images/street.jpg" alt="Karos Petroleum station along the road" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </button>
+                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The forecourt">
+                        <img src="images/forecourt.jpg" alt="Forecourt with the LPG lane and fuel pumps" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </button>
+                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="Under the canopy">
+                        <img src="images/canopy.jpg" alt="Cars fueling under the Karos canopy" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </button>
+                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The approach">
+                        <img src="images/garden.jpg" alt="Landscaped approach to the Karos Petroleum canopy" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </button>
+                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="Welcome">
+                        <img src="images/welcome.jpg" alt="Welcome sign at the entrance of the Karos station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </button>
+                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="At night">
+                        <img src="images/night.jpg" alt="Karos Petroleum station lit at night" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                    </button>
+                </div>
+                <p id="empty" class="mt-10 hidden border border-ink/10 bg-paper px-6 py-16 text-center text-lg text-ink/70"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="border-t border-ink/10 bg-paper">
+        <div class="mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-3 lg:items-end">
+            <a href="#top" aria-label="MARS Iraq Group">
+                <img src="images/mars-logo.jpg" alt="" class="h-14 w-auto" />
+            </a>
+            <div class="text-lg leading-8">
+                <p class="font-display text-xl font-bold">MARS Iraq Group</p>
+                <p class="text-ink/70">Sulaymaniyah, Kurdistan Region of Iraq</p>
+            </div>
+            <div class="flex flex-col items-start gap-3 lg:items-end">
+                <a class="text-lg text-rust hover:underline" href="tel:+9647725118040"><bdi dir="ltr">0772 511 8040</bdi></a>
+                <a class="border border-ink px-4 py-2.5 text-xs font-medium uppercase tracking-[0.16em] hover:bg-ink hover:text-paper" href="https://wa.me/9647725118040">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <dialog id="lightbox" aria-label="Photograph">
+        <div class="flex h-full flex-col items-center justify-center gap-4 p-4 sm:p-8">
+            <img id="light-img" alt="" class="max-w-full object-contain" />
+            <p id="light-cap" class="text-sm uppercase tracking-[0.16em] text-white/80"></p>
+            <div class="flex gap-2">
+                <button type="button" id="light-prev" class="border border-white/30 px-4 py-2 text-xs uppercase tracking-[0.14em] text-white">Previous</button>
+                <button type="button" id="light-next" class="border border-white/30 px-4 py-2 text-xs uppercase tracking-[0.14em] text-white">Next</button>
+                <button type="button" id="light-close" class="bg-white px-4 py-2 text-xs uppercase tracking-[0.14em] text-ink">Close</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script>
+        const intro = document.getElementById("intro");
+        if (intro) intro.addEventListener("animationend", (event) => {
+            if (event.animationName === "intro-leave") intro.remove();
+        });
+
+        const bar = document.getElementById("topbar");
+        const onScroll = () => bar.classList.toggle("nav-solid", window.scrollY > 8);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!still && "IntersectionObserver" in window) {
+            const seen = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) entry.target.classList.add("in");
+                });
+            }, { threshold: 0.16 });
+            document.querySelectorAll(".rise").forEach((el) => seen.observe(el));
+        } else {
+            document.querySelectorAll(".rise").forEach((el) => el.classList.add("in"));
+        }
+
+        const menu = document.getElementById("menu");
+        const menuBtn = document.getElementById("menu-btn");
+        menuBtn.addEventListener("click", () => {
+            const open = menu.classList.toggle("hidden") === false;
+            menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+            menu.classList.add("hidden");
+            menuBtn.setAttribute("aria-expanded", "false");
+        }));
+
+        const emptyCopy = {
+            oil: "Photographs of oil transport and commodities are still to come.",
+            construction: "Photographs of the Nova City construction work are still to come."
+        };
+        const empty = document.getElementById("empty");
+        const filterButtons = document.querySelectorAll("[data-filter]");
+        function applyFilter(firm) {
+            let shown = 0;
+            document.querySelectorAll("#gallery [data-firm]").forEach((item) => {
+                const on = firm === "all" || item.getAttribute("data-firm") === firm;
+                item.classList.toggle("hidden", !on);
+                if (on) shown += 1;
+            });
+            empty.textContent = emptyCopy[firm] || "";
+            empty.classList.toggle("hidden", shown > 0);
+            filterButtons.forEach((button) => {
+                const on = button.getAttribute("data-filter") === firm;
+                button.classList.toggle("filter-on", on);
+                button.classList.toggle("border", !on);
+                button.classList.toggle("border-ink/15", !on);
+                button.classList.toggle("bg-paper", !on);
+                button.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+        }
+        filterButtons.forEach((button) => button.addEventListener("click", () => applyFilter(button.getAttribute("data-filter"))));
+
+        const dialog = document.getElementById("lightbox");
+        const lightImg = document.getElementById("light-img");
+        const lightCap = document.getElementById("light-cap");
+        let lightIndex = 0;
+        const visibleShots = () => [...document.querySelectorAll("#gallery [data-firm]:not(.hidden)")];
+        function showShot(index) {
+            const shots = visibleShots();
+            if (!shots.length) return;
+            lightIndex = (index + shots.length) % shots.length;
+            const shot = shots[lightIndex];
+            const img = shot.querySelector("img");
+            lightImg.src = img.src;
+            lightImg.alt = img.alt;
+            lightCap.textContent = shot.getAttribute("data-caption") || "";
+        }
+        document.querySelectorAll("#gallery [data-firm]").forEach((shot) => {
+            shot.addEventListener("click", () => {
+                lightIndex = visibleShots().indexOf(shot);
+                showShot(lightIndex);
+                dialog.showModal();
+            });
+        });
+        document.getElementById("light-prev").addEventListener("click", () => showShot(lightIndex - 1));
+        document.getElementById("light-next").addEventListener("click", () => showShot(lightIndex + 1));
+        document.getElementById("light-close").addEventListener("click", () => dialog.close());
+        dialog.addEventListener("click", (event) => {
+            if (event.target === dialog) dialog.close();
+        });
+    </script>
+</body>
+</html>
