@@ -67,8 +67,7 @@
         #lightbox::backdrop { background: rgba(20,18,16,.96); }
         #light-cap { background: #141210; padding: 0.35rem 0.7rem; }
         #lightbox img { max-height: min(82vh, 900px); }
-        .filter-on { background: #C12B03; color: #fff; }
-        #gallery button::after {
+        #work [data-caption]::after {
             content: attr(data-caption);
             position: absolute;
             inset: auto 0 0 0;
@@ -208,54 +207,39 @@
 
         <section id="work" class="bg-ink text-paper">
             <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
-                <div class="rise flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                        <p class="text-sm uppercase tracking-[0.28em] text-rust">Work</p>
-                        <h2 class="mt-4 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">The collection</h2>
-                    </div>
-                    <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by firm">
-                        <button type="button" data-filter="all" class="filter-on px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] text-white" aria-pressed="true">All</button>
-                        <button type="button" data-filter="karos" class="border border-white/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] text-white" aria-pressed="false">Karos</button>
-                        <button type="button" data-filter="oil" class="border border-white/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] text-white" aria-pressed="false">Import</button>
-                        <button type="button" data-filter="construction" class="border border-white/50 px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] text-white" aria-pressed="false">Construction</button>
+                <p class="text-sm uppercase tracking-[0.28em] text-rust">Work</p>
+                <div class="mt-12">
+                    <p class="text-xs font-medium uppercase tracking-[0.22em] text-gold">Fuel stations</p>
+                    <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">Karos Petroleum</h2>
+                    <div class="mt-6 grid gap-3 sm:grid-cols-3">
+                        <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="At night">
+                            <img src="images/night.jpg" alt="Karos Petroleum station lit at night" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                        </button>
+                        <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The station">
+                            <img src="images/facade.jpg" alt="Concrete facade of the Karos Petroleum station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                        </button>
+                        <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The forecourt">
+                            <img src="images/forecourt.jpg" alt="Forecourt with the LPG lane and fuel pumps" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                        </button>
                     </div>
                 </div>
-                <div id="gallery" class="mt-10 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                    <button type="button" data-firm="oil" class="group relative overflow-hidden text-left sm:col-span-2" data-caption="The depot">
-                        <img src="images/oil-depot.jpg" alt="Aerial view of the MARS oil depot, tanks, and tanker trucks" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:aspect-[16/9]" />
-                    </button>
-                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The station mark">
-                        <img src="images/facade.jpg" alt="Concrete facade of the Karos Petroleum station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="From the road">
-                        <img src="images/street.jpg" alt="Karos Petroleum station along the road" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The forecourt">
-                        <img src="images/forecourt.jpg" alt="Forecourt with the LPG lane and fuel pumps" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="Under the canopy">
-                        <img src="images/canopy.jpg" alt="Cars fueling under the Karos canopy" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The approach">
-                        <img src="images/garden.jpg" alt="Landscaped approach to the Karos Petroleum canopy" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="Welcome">
-                        <img src="images/welcome.jpg" alt="Welcome sign at the entrance of the Karos station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="Loading">
-                        <img src="images/oil-loading.jpg" alt="Tanker truck at the loading bays" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="The yard">
-                        <img src="images/oil-yard.jpg" alt="Tanker truck in the depot yard" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="The tanker">
-                        <img src="images/oil-tanker.jpg" alt="Fuel tanker at the depot at sunset" class="aspect-[4/3] w-full object-cover object-[center_40%] transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="At night">
-                        <img src="images/night.jpg" alt="Karos Petroleum station lit at night" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
+                <div class="mt-16 sm:mt-24">
+                    <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Import and export</p>
+                    <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">Oil and commodities</h2>
+                    <div class="mt-6 grid gap-3">
+                        <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="The depot">
+                            <img src="images/oil-depot.jpg" alt="Aerial view of the MARS oil depot, tanks, and tanker trucks" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:aspect-[16/8]" />
+                        </button>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="Loading">
+                                <img src="images/oil-loading.jpg" alt="Tanker truck at the loading bays" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:aspect-[16/10]" />
+                            </button>
+                            <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="The tanker">
+                                <img src="images/oil-tanker.jpg" alt="Fuel tanker at the depot at sunset" class="aspect-[4/3] w-full object-cover object-[center_40%] transition duration-500 group-hover:scale-[1.03] sm:aspect-[16/10]" />
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <p id="empty" class="mt-10 hidden border border-ink/10 bg-paper px-6 py-16 text-center text-lg text-ink/70"></p>
             </div>
         </section>
     </main>
@@ -336,37 +320,11 @@
         syncBar();
         window.addEventListener("scroll", syncBar, { passive: true });
 
-        const emptyCopy = {
-            oil: "Photographs of oil transport and commodities are still to come.",
-            construction: "Photographs of the Nova City construction work are still to come."
-        };
-        const empty = document.getElementById("empty");
-        const filterButtons = document.querySelectorAll("[data-filter]");
-        function applyFilter(firm) {
-            let shown = 0;
-            document.querySelectorAll("#gallery [data-firm]").forEach((item) => {
-                const on = firm === "all" || item.getAttribute("data-firm") === firm;
-                item.classList.toggle("hidden", !on);
-                if (on) shown += 1;
-            });
-            empty.textContent = emptyCopy[firm] || "";
-            empty.classList.toggle("hidden", shown > 0);
-            filterButtons.forEach((button) => {
-                const on = button.getAttribute("data-filter") === firm;
-                button.classList.toggle("filter-on", on);
-                button.classList.toggle("border", !on);
-                button.classList.toggle("border-white/50", !on);
-                button.classList.toggle("text-white", !on);
-                button.setAttribute("aria-pressed", on ? "true" : "false");
-            });
-        }
-        filterButtons.forEach((button) => button.addEventListener("click", () => applyFilter(button.getAttribute("data-filter"))));
-
         const dialog = document.getElementById("lightbox");
         const lightImg = document.getElementById("light-img");
         const lightCap = document.getElementById("light-cap");
         let lightIndex = 0;
-        const visibleShots = () => [...document.querySelectorAll("#gallery [data-firm]:not(.hidden)")];
+        const visibleShots = () => [...document.querySelectorAll("#work [data-firm]")];
         function showShot(index) {
             const shots = visibleShots();
             if (!shots.length) return;
@@ -377,7 +335,7 @@
             lightImg.alt = img.alt;
             lightCap.textContent = shot.getAttribute("data-caption") || "";
         }
-        document.querySelectorAll("#gallery [data-firm]").forEach((shot) => {
+        document.querySelectorAll("#work [data-firm]").forEach((shot) => {
             shot.addEventListener("click", () => {
                 lightIndex = visibleShots().indexOf(shot);
                 showShot(lightIndex);
