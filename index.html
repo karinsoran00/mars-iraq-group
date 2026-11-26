@@ -57,7 +57,19 @@
         #lightbox::backdrop { background: rgba(20,18,16,.96); }
         #light-cap { background: #141210; padding: 0.35rem 0.7rem; }
         #lightbox img { max-height: min(82vh, 900px); }
-        .filter-on { background: #141210; color: #fff; }
+        .filter-on { background: #C12B03; color: #fff; }
+        #gallery button::after {
+            content: attr(data-caption);
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 2.75rem 1rem 0.85rem;
+            background: linear-gradient(to top, rgba(20,18,16,.78), transparent);
+            color: #fff;
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            text-align: left;
+        }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .reveal, .rise { opacity: 1; transform: none; animation: none; transition: none; }
@@ -99,7 +111,7 @@
                 <a class="hover:text-ink" href="#contact">Contact</a>
             </nav>
             <div class="flex items-center gap-3">
-                <a class="hidden border border-ink px-4 py-2.5 text-xs font-medium uppercase tracking-[0.16em] hover:bg-ink hover:text-paper sm:inline-block" href="tel:+9647725118040">Call</a>
+                <a class="hidden bg-rust px-4 py-2.5 text-xs font-medium uppercase tracking-[0.16em] text-white hover:bg-ink sm:inline-block" href="tel:+9647725118040">Call</a>
                 <button id="menu-btn" type="button" class="grid h-11 w-11 place-items-center border border-ink/15 md:hidden" aria-expanded="false" aria-controls="menu">
                     <span class="sr-only">Menu</span>
                     <span class="block h-px w-4 bg-ink"></span>
@@ -119,26 +131,49 @@
     </header>
 
     <main id="top">
-        <section class="grid min-h-[100svh] lg:grid-cols-2">
-            <div class="flex flex-col justify-end px-5 pb-12 pt-32 sm:px-8 sm:pb-16 lg:px-12 lg:pb-20">
-                <p class="reveal text-sm uppercase tracking-[0.28em] text-rust">Kurdistan Region of Iraq · Since 2007</p>
-                <h1 class="reveal reveal-2 mt-5 max-w-xl font-display text-5xl font-extrabold leading-[0.92] tracking-[-0.03em] sm:text-6xl">Oil and petroleum, across Iraq.</h1>
-                <p class="reveal reveal-3 mt-6 max-w-md text-lg leading-relaxed text-ink/70">MARS Iraq Group moves petroleum products, imports and exports them, and runs fuel stations through Karos Petroleum. The work starts in the Kurdistan Region and continues across the country.</p>
+        <section class="relative flex min-h-[calc(100svh-5rem)] items-end overflow-hidden bg-ink">
+            <img src="images/oil-yard.jpg" alt="Tanker truck in the MARS depot yard" class="absolute inset-0 h-full w-full object-cover object-[center_42%]" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/15"></div>
+            <div class="relative mx-auto w-full max-w-6xl px-5 pb-14 pt-16 sm:pb-20">
+                <p class="reveal text-sm uppercase tracking-[0.32em] text-white/75">Kurdistan Region of Iraq · Since 2007</p>
+                <h1 class="reveal reveal-2 mt-4 max-w-4xl font-display text-5xl font-extrabold leading-[0.88] tracking-[-0.04em] text-white sm:text-7xl lg:text-8xl">Oil and petroleum, across Iraq.</h1>
+                <p class="reveal reveal-3 mt-6 max-w-xl text-lg leading-relaxed text-white/80">MARS Iraq Group moves petroleum products, imports and exports them, and runs fuel stations through Karos Petroleum. The work starts in the Kurdistan Region and continues across the country.</p>
                 <div class="reveal reveal-3 mt-8 flex flex-wrap gap-3">
-                    <a class="bg-rust px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-white hover:bg-ink" href="#firms">The firms</a>
-                    <a class="border border-ink/20 px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] hover:border-ink" href="#work">Karos station</a>
+                    <a class="bg-rust px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-white hover:bg-white hover:text-ink" href="#firms">The firms</a>
+                    <a class="border border-white/40 px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-white hover:bg-white hover:text-ink" href="tel:+9647725118040">Call</a>
                 </div>
-            </div>
-            <div class="relative min-h-[70vw] lg:min-h-full">
-                <img src="images/night.jpg" alt="Karos Petroleum station in Sulaymaniyah at night" class="absolute inset-0 h-full w-full object-cover object-[center_60%]" />
             </div>
         </section>
 
-        <section class="border-y border-ink/10">
-            <div class="mx-auto grid max-w-6xl sm:grid-cols-3">
-                <p class="border-ink/10 px-5 py-6 text-sm leading-6 sm:px-8 sm:py-8 lg:border-r"><span class="block font-display text-lg font-bold">2007</span>Established in the Kurdistan Region of Iraq.</p>
-                <p class="border-t border-ink/10 px-5 py-6 text-sm leading-6 sm:border-t-0 sm:px-8 sm:py-8 lg:border-r"><span class="block font-display text-lg font-bold">Karos Petroleum</span>The group’s fuel stations, in Sulaymaniyah.</p>
-                <p class="border-t border-ink/10 px-5 py-6 text-sm leading-6 sm:border-t-0 sm:px-8 sm:py-8"><span class="block font-display text-lg font-bold">Nova City</span>Construction in Sulaymaniyah, on Malik Mahmud Ring Road.</p>
+        <section id="firms" class="bg-ink text-paper">
+            <div class="mx-auto max-w-6xl px-5 pb-4 pt-16 sm:pt-20">
+                <p class="text-sm uppercase tracking-[0.28em] text-rust">Firms</p>
+                <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-6xl">Three firms, one group.</h2>
+            </div>
+            <div class="mt-8 grid lg:grid-cols-3">
+                <article class="group relative min-h-[32rem] overflow-hidden">
+                    <img src="images/night.jpg" alt="Karos Petroleum station in Sulaymaniyah at night" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-7 sm:p-9">
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-gold">Fuel stations</p>
+                        <h3 class="mt-2 font-display text-4xl font-extrabold tracking-tight">Karos Petroleum</h3>
+                        <p class="mt-3 max-w-sm leading-relaxed text-white/80">A firm of MARS Iraq Group. Petrol, diesel, LPG, car wash, car service, and Karos Market in Sulaymaniyah.</p>
+                    </div>
+                </article>
+                <article class="group relative min-h-[32rem] overflow-hidden">
+                    <img src="images/oil-loading.jpg" alt="Tanker at the MARS loading bays" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-7 sm:p-9">
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Import and export</p>
+                        <h3 class="mt-2 font-display text-4xl font-extrabold tracking-tight">Oil and commodities</h3>
+                        <p class="mt-3 max-w-sm leading-relaxed text-white/80">Transportation and distribution, and the import and export of petroleum products across Iraq.</p>
+                    </div>
+                </article>
+                <article class="flex min-h-[32rem] flex-col justify-end bg-[#231511] p-7 sm:p-9">
+                    <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Construction</p>
+                    <h3 class="mt-3 font-display text-5xl font-extrabold leading-none tracking-tight sm:text-6xl">Nova City</h3>
+                    <p class="mt-4 max-w-sm text-lg leading-relaxed text-white/75">Sulaymaniyah. A private residential compound on Malik Mahmud Ring Road, near the Zargata underpass.</p>
+                </article>
             </div>
         </section>
 
@@ -156,59 +191,16 @@
             </div>
         </section>
 
-        <section id="firms" class="bg-paper">
-            <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
-                <div class="rise">
-                    <p class="text-sm uppercase tracking-[0.28em] text-rust">Firms</p>
-                    <h2 class="mt-4 max-w-2xl font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">Three firms, one group.</h2>
-                </div>
-                <div class="mt-12 grid gap-5 lg:grid-cols-3">
-                    <article class="rise rise-2 flex flex-col border border-ink/10">
-                        <img src="images/street.jpg" alt="Karos Petroleum station seen from the road in Sulaymaniyah" class="aspect-[4/3] w-full object-cover" />
-                        <div class="flex flex-1 flex-col p-6 sm:p-7">
-                            <p class="text-xs font-medium uppercase tracking-[0.2em] text-gold">Fuel stations</p>
-                            <h3 class="mt-3 font-display text-3xl font-extrabold tracking-tight">Karos Petroleum</h3>
-                            <p class="mt-3 leading-relaxed text-ink/70">A firm of MARS Iraq Group. Karos runs the fuel station in Sulaymaniyah: petrol, diesel, LPG, and the services beside the pumps.</p>
-                            <ul class="mt-5 flex flex-wrap gap-2 text-xs uppercase tracking-[0.12em]">
-                                <li class="border border-ink/15 px-2.5 py-1">Super</li>
-                                <li class="border border-ink/15 px-2.5 py-1">Muhasan</li>
-                                <li class="border border-ink/15 px-2.5 py-1">Normal</li>
-                                <li class="border border-ink/15 px-2.5 py-1">Diesel</li>
-                                <li class="border border-ink/15 px-2.5 py-1">LPG</li>
-                                <li class="border border-ink/15 px-2.5 py-1">Car wash</li>
-                                <li class="border border-ink/15 px-2.5 py-1">Car service</li>
-                                <li class="border border-ink/15 px-2.5 py-1">Karos Market</li>
-                            </ul>
-                        </div>
-                    </article>
-                    <article class="rise flex flex-col border border-ink/10">
-                        <img src="images/oil-depot.jpg" alt="MARS oil depot with storage tanks and tanker trucks" class="aspect-[4/3] w-full object-cover" />
-                        <div class="flex flex-1 flex-col p-6 sm:p-7">
-                            <p class="text-xs font-medium uppercase tracking-[0.2em] text-rust">Supply</p>
-                            <h3 class="mt-3 font-display text-3xl font-extrabold tracking-tight">Transport, import, and export</h3>
-                            <p class="mt-3 leading-relaxed text-ink/70">Transportation and distribution of oil products, and the import and export of petroleum products. The work connects that movement with availability to the market, for commercial partners across Iraq’s energy sector.</p>
-                        </div>
-                    </article>
-                    <article class="rise flex flex-col border border-ink/10">
-                        <div class="grid aspect-[4/3] place-items-end bg-sand p-6">
-                            <p class="font-display text-4xl font-extrabold leading-none tracking-tight">Nova City</p>
-                        </div>
-                        <div class="flex flex-1 flex-col p-6 sm:p-7">
-                            <p class="text-xs font-medium uppercase tracking-[0.2em] text-rust">Construction</p>
-                            <h3 class="mt-3 font-display text-3xl font-extrabold tracking-tight">Sulaymaniyah</h3>
-                            <p class="mt-3 leading-relaxed text-ink/70">Construction at Nova City, a private residential compound on Malik Mahmud Ring Road, near the Zargata underpass.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
+        <section class="relative h-[78vh] min-h-[32rem] overflow-hidden bg-ink">
+            <img src="images/oil-tanker.jpg" alt="Fuel tanker at the depot at sunset" class="absolute inset-0 h-full w-full object-cover object-[center_30%]" />
         </section>
 
-        <section id="work" class="bg-sand">
+        <section id="work" class="bg-ink text-paper">
             <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
                 <div class="rise flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                     <div>
                         <p class="text-sm uppercase tracking-[0.28em] text-rust">Work</p>
-                        <h2 class="mt-4 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">The collection</h2>
+                        <h2 class="mt-4 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">The collection</h2>
                     </div>
                     <div class="flex flex-wrap gap-2" role="group" aria-label="Filter by firm">
                         <button type="button" data-filter="all" class="filter-on px-4 py-2 text-xs font-medium uppercase tracking-[0.14em]" aria-pressed="true">All</button>
@@ -217,7 +209,10 @@
                         <button type="button" data-filter="construction" class="border border-ink/15 bg-paper px-4 py-2 text-xs font-medium uppercase tracking-[0.14em]" aria-pressed="false">Construction</button>
                     </div>
                 </div>
-                <div id="gallery" class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div id="gallery" class="mt-10 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    <button type="button" data-firm="oil" class="group relative overflow-hidden text-left sm:col-span-2" data-caption="The depot">
+                        <img src="images/oil-depot.jpg" alt="Aerial view of the MARS oil depot, tanks, and tanker trucks" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:aspect-[16/9]" />
+                    </button>
                     <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="The station mark">
                         <img src="images/facade.jpg" alt="Concrete facade of the Karos Petroleum station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
                     </button>
@@ -235,9 +230,6 @@
                     </button>
                     <button type="button" data-firm="karos" class="group relative overflow-hidden text-left" data-caption="Welcome">
                         <img src="images/welcome.jpg" alt="Welcome sign at the entrance of the Karos station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    </button>
-                    <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="The depot">
-                        <img src="images/oil-depot.jpg" alt="Aerial view of the MARS oil depot, tanks, and tanker trucks" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
                     </button>
                     <button type="button" data-firm="oil" class="group relative overflow-hidden text-left" data-caption="Loading">
                         <img src="images/oil-loading.jpg" alt="Tanker truck at the loading bays" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
