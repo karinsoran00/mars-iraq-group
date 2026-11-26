@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>MARS Iraq Group · Kurdistan Region</title>
     <meta name="description" content="MARS Iraq Group, established in 2007 in the Kurdistan Region of Iraq. Oil transportation and distribution, import and export of petroleum products, Karos Petroleum fuel stations, and construction at Nova City in Sulaymaniyah." />
+    <link rel="canonical" href="https://karinsoran00.github.io/mars-iraq-group/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://karinsoran00.github.io/mars-iraq-group/" />
+    <meta property="og:title" content="MARS Iraq Group" />
+    <meta property="og:description" content="Oil and petroleum, across Iraq. Established in 2007 in the Kurdistan Region." />
+    <meta property="og:image" content="https://karinsoran00.github.io/mars-iraq-group/images/share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MARS Iraq Group. Oil and petroleum, across Iraq." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MARS Iraq Group" />
+    <meta name="twitter:description" content="Oil and petroleum, across Iraq. Established in 2007 in the Kurdistan Region." />
+    <meta name="twitter:image" content="https://karinsoran00.github.io/mars-iraq-group/images/share.jpg" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23C12B03' d='M32 4C32 4 10 30 10 42a22 22 0 0 0 44 0C54 30 32 4 32 4z'/%3E%3Cpath fill='%23141210' d='M24 40c2 8 8 14 14 12 2-6-2-14-8-20-2 4-6 6-6 8z'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,7 +44,7 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        #about, #firms, #work, #contact { scroll-margin-top: 5.5rem; }
+        #about, #firms, #work, #contact, #chapter-oil, #chapter-karos, #chapter-nova { scroll-margin-top: 5.5rem; }
         body { background: #ffffff; }
         #topbar {
             transition: transform .45s ease, background-color .25s, border-color .25s, color .25s;
@@ -84,6 +97,55 @@
             .reveal, .rise { opacity: 1; transform: none; animation: none; transition: none; }
             #topbar { transition: none; }
             #intro { display: none; }
+            #chapters { transition: none; }
+        }
+        #chapters {
+            position: fixed;
+            z-index: 30;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+            padding: 0.85rem 1.25rem calc(0.85rem + env(safe-area-inset-bottom));
+            background: rgba(20,18,16,.94);
+            border-top: 1px solid rgba(255,255,255,.12);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s ease;
+        }
+        #chapters.on { opacity: 1; pointer-events: auto; }
+        #chapters a {
+            color: rgba(255,255,255,.55);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+        #chapters a.on { color: #C12B03; }
+        @media (min-width: 1024px) {
+            #chapters {
+                left: auto;
+                right: 1.5rem;
+                bottom: auto;
+                top: 50%;
+                width: max-content;
+                transform: translateY(-50%);
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 1.15rem;
+                padding: 0;
+                background: transparent;
+                border: 0;
+            }
+            #chapters a { display: flex; align-items: center; gap: 0.7rem; font-size: 0.72rem; }
+            #chapters a::after {
+                content: "";
+                width: 1.35rem;
+                height: 1px;
+                background: currentColor;
+            }
         }
     </style>
     <script type="application/ld+json">
@@ -202,9 +264,9 @@
         </section>
 
         <section id="work" class="bg-ink text-paper">
-            <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 md:py-28">
+            <div class="mx-auto max-w-6xl px-5 pt-20 pb-32 sm:px-8 md:pt-28 lg:pr-36 lg:pb-28">
                 <p class="text-sm uppercase tracking-[0.28em] text-rust">Work</p>
-                <div class="mt-12">
+                <div id="chapter-oil" data-chapter-block="oil" class="mt-12">
                     <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Import and export</p>
                     <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">Oil and commodities</h2>
                     <div class="mt-6 grid gap-3 sm:grid-cols-3">
@@ -219,7 +281,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="mt-16 sm:mt-24">
+                <div id="chapter-karos" data-chapter-block="karos" class="mt-16 sm:mt-24">
                     <p class="text-xs font-medium uppercase tracking-[0.22em] text-gold">Fuel stations</p>
                     <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">Karos Petroleum</h2>
                     <div class="mt-6 grid gap-3 sm:grid-cols-3">
@@ -234,7 +296,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="mt-16 sm:mt-24">
+                <div id="chapter-nova" data-chapter-block="nova" class="mt-16 sm:mt-24">
                     <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Construction</p>
                     <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">Nova City</h2>
                     <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/75">Sulaymaniyah. A private residential compound on Malik Mahmud Ring Road, near the Zargata underpass.</p>
@@ -258,6 +320,12 @@
             </div>
         </div>
     </footer>
+
+    <nav id="chapters" aria-label="Firms">
+        <a href="#chapter-oil" data-chapter="oil">Oil</a>
+        <a href="#chapter-karos" data-chapter="karos">Karos</a>
+        <a href="#chapter-nova" data-chapter="nova">Nova City</a>
+    </nav>
 
     <dialog id="lightbox" aria-label="Photograph">
         <div class="flex h-full flex-col items-center justify-center gap-4 p-4 sm:p-8">
@@ -314,6 +382,27 @@
         }));
         syncBar();
         window.addEventListener("scroll", syncBar, { passive: true });
+
+        const chapters = document.getElementById("chapters");
+        const chapterLinks = [...chapters.querySelectorAll("[data-chapter]")];
+        const chapterBlocks = [...document.querySelectorAll("[data-chapter-block]")];
+        const markChapter = () => {
+            const line = window.innerHeight * 0.46;
+            let name = "";
+            chapterBlocks.forEach((block) => {
+                const box = block.getBoundingClientRect();
+                if (box.top <= line && box.bottom >= line) name = block.getAttribute("data-chapter-block");
+            });
+            chapters.classList.toggle("on", name !== "");
+            chapterLinks.forEach((link) => {
+                const on = link.getAttribute("data-chapter") === name;
+                link.classList.toggle("on", on);
+                if (on) link.setAttribute("aria-current", "true");
+                else link.removeAttribute("aria-current");
+            });
+        };
+        markChapter();
+        window.addEventListener("scroll", markChapter, { passive: true });
 
         const dialog = document.getElementById("lightbox");
         const lightImg = document.getElementById("light-img");
