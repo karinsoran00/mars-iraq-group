@@ -21,7 +21,7 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23C12B03' d='M32 4C32 4 10 30 10 42a22 22 0 0 0 44 0C54 30 32 4 32 4z'/%3E%3Cpath fill='%23141210' d='M24 40c2 8 8 14 14 12 2-6-2-14-8-20-2 4-6 6-6 8z'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Noto+Naskh+Arabic:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -133,7 +133,23 @@
                 height: 1px;
                 background: currentColor;
             }
+            html[dir="rtl"] #chapters {
+                right: auto;
+                left: 1.5rem;
+                align-items: flex-start;
+            }
+            html[dir="rtl"] #chapters a { flex-direction: row-reverse; }
+            html[dir="rtl"] #work > .mx-auto { padding-right: 2rem; padding-left: 9rem; }
         }
+        html[dir="rtl"] body,
+        html[dir="rtl"] .font-display {
+            font-family: "Noto Naskh Arabic", "Outfit", sans-serif;
+        }
+        html[dir="rtl"] [class*="tracking-"] { letter-spacing: 0; text-transform: none; }
+        html[dir="rtl"] h1 { font-size: clamp(2.5rem, 6vw, 4.6rem); line-height: 1.3; }
+        html[dir="rtl"] h2, html[dir="rtl"] h3 { line-height: 1.35; }
+        .lang-btn { opacity: .62; }
+        .lang-btn.lang-on { opacity: 1; text-decoration: underline; text-underline-offset: .35em; }
     </style>
     <script type="application/ld+json">
     {
@@ -154,7 +170,7 @@
     <div id="intro" aria-hidden="true">
         <img src="images/mars-logo.jpg" alt="" />
     </div>
-    <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-ink focus:px-3 focus:py-2 focus:text-paper" href="#top">Skip to content</a>
+    <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:bg-ink focus:px-3 focus:py-2 focus:text-paper" href="#top" data-i18n="skip">Skip to content</a>
 
     <header id="topbar" class="fixed inset-x-0 top-0 z-40 border-b border-transparent text-white">
         <div class="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-5">
@@ -166,12 +182,17 @@
                 <span class="font-display text-[1.7rem] font-extrabold leading-none tracking-[-0.05em]">MARS</span>
             </a>
             <nav class="hidden items-center gap-8 text-[15px] md:flex" aria-label="Page">
-                <a class="opacity-80 hover:opacity-100" href="#about">About</a>
-                <a class="opacity-80 hover:opacity-100" href="#firms">Firms</a>
-                <a class="opacity-80 hover:opacity-100" href="#work">Work</a>
-                <a class="opacity-80 hover:opacity-100" href="#contact">Contact</a>
+                <a class="opacity-80 hover:opacity-100" href="#about" data-i18n="nav.about">About</a>
+                <a class="opacity-80 hover:opacity-100" href="#firms" data-i18n="nav.firms">Firms</a>
+                <a class="opacity-80 hover:opacity-100" href="#work" data-i18n="nav.work">Work</a>
+                <a class="opacity-80 hover:opacity-100" href="#contact" data-i18n="nav.contact">Contact</a>
             </nav>
             <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2.5 text-[13px] font-medium" role="group" aria-label="Language">
+                    <button type="button" data-lang="en" class="lang-btn">EN</button>
+                    <button type="button" data-lang="ckb" class="lang-btn">کوردی</button>
+                    <button type="button" data-lang="ar" class="lang-btn">العربية</button>
+                </div>
                 <button id="menu-btn" type="button" class="grid h-11 w-11 place-items-center border border-current/30 md:hidden" aria-expanded="false" aria-controls="menu">
                     <span class="sr-only">Menu</span>
                     <span class="block h-px w-4 bg-current"></span>
@@ -181,48 +202,48 @@
         </div>
         <div id="menu" class="hidden border-t border-ink/10 bg-paper text-ink md:hidden">
             <div class="flex flex-col px-5 py-4 text-lg">
-                <a class="py-2" href="#about">About</a>
-                <a class="py-2" href="#firms">Firms</a>
-                <a class="py-2" href="#work">Work</a>
-                <a class="py-2" href="#contact">Contact</a>
+                <a class="py-2" href="#about" data-i18n="nav.about">About</a>
+                <a class="py-2" href="#firms" data-i18n="nav.firms">Firms</a>
+                <a class="py-2" href="#work" data-i18n="nav.work">Work</a>
+                <a class="py-2" href="#contact" data-i18n="nav.contact">Contact</a>
             </div>
         </div>
     </header>
 
     <main id="top">
         <section class="relative flex min-h-[100svh] items-end overflow-hidden bg-ink">
-            <img src="images/oil-yard.jpg" alt="Tanker truck in the MARS depot yard" class="absolute inset-0 h-full w-full object-cover object-[center_42%]" />
+            <img src="images/oil-yard.jpg" alt="Tanker truck in the MARS depot yard" data-i18n-alt="alt.yard" class="absolute inset-0 h-full w-full object-cover object-[center_42%]" />
             <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/15"></div>
             <div class="relative mx-auto w-full max-w-6xl px-5 pb-14 pt-16 sm:pb-20">
-                <p class="reveal text-sm uppercase tracking-[0.32em] text-white/75">Kurdistan Region of Iraq · Since 2007</p>
-                <h1 class="reveal reveal-2 mt-4 max-w-4xl font-display text-5xl font-extrabold leading-[0.88] tracking-[-0.04em] text-white sm:text-7xl lg:text-8xl">Oil and petroleum, across Iraq.</h1>
-                <p class="reveal reveal-3 mt-6 max-w-xl text-lg leading-relaxed text-white/80">MARS Iraq Group moves petroleum products, imports and exports them, and runs fuel stations in Sulaymaniyah. The work starts in the Kurdistan Region and continues across the country.</p>
+                <p class="reveal text-sm uppercase tracking-[0.32em] text-white/75" data-i18n="hero.eyebrow">Kurdistan Region of Iraq · Since 2007</p>
+                <h1 class="reveal reveal-2 mt-4 max-w-4xl font-display text-5xl font-extrabold leading-[0.88] tracking-[-0.04em] text-white sm:text-7xl lg:text-8xl" data-i18n="hero.title">Oil and petroleum, across Iraq.</h1>
+                <p class="reveal reveal-3 mt-6 max-w-xl text-lg leading-relaxed text-white/80" data-i18n="hero.lead">MARS Iraq Group moves petroleum products, imports and exports them, and runs fuel stations in Sulaymaniyah. The work starts in the Kurdistan Region and continues across the country.</p>
                 <div class="reveal reveal-3 mt-8 flex flex-wrap gap-3">
-                    <a class="bg-rust px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-white hover:bg-white hover:text-ink" href="#firms">The firms</a>
+                    <a class="bg-rust px-5 py-3 text-xs font-medium uppercase tracking-[0.16em] text-white hover:bg-white hover:text-ink" href="#firms" data-i18n="hero.cta">The firms</a>
                 </div>
             </div>
         </section>
 
         <section id="firms" class="bg-ink text-paper">
             <div class="mx-auto max-w-6xl px-5 pb-4 pt-16 sm:pt-20">
-                <p class="text-sm uppercase tracking-[0.28em] text-rust">Firms</p>
-                <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-6xl">Two firms, one group.</h2>
+                <p class="text-sm uppercase tracking-[0.28em] text-rust" data-i18n="firms.kicker">Firms</p>
+                <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-6xl" data-i18n="firms.title">Two firms, one group.</h2>
             </div>
             <div class="mt-8 grid gap-4 px-4 pb-4 lg:grid-cols-2">
                 <article class="flex flex-col">
-                    <img src="images/oil-loading.jpg" alt="Tanker at the MARS loading bays" class="aspect-[4/3] w-full object-cover" />
+                    <img src="images/oil-loading.jpg" alt="Tanker at the MARS loading bays" data-i18n-alt="alt.loading" class="aspect-[4/3] w-full object-cover" />
                     <div class="px-1 py-6">
-                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Import and export</p>
-                        <h3 class="mt-2 font-display text-3xl font-extrabold tracking-tight">Oil and commodities</h3>
-                        <p class="mt-3 leading-relaxed text-white/80">Transportation and distribution, and the import and export of petroleum products across Iraq.</p>
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust" data-i18n="oil.kicker">Import and export</p>
+                        <h3 class="mt-2 font-display text-3xl font-extrabold tracking-tight" data-i18n="oil.title">Oil and commodities</h3>
+                        <p class="mt-3 leading-relaxed text-white/80" data-i18n="oil.body">Transportation and distribution, and the import and export of petroleum products across Iraq.</p>
                     </div>
                 </article>
                 <article class="flex flex-col">
-                    <img src="images/night.jpg" alt="Fuel station in Sulaymaniyah at night" class="aspect-[4/3] w-full object-cover" />
+                    <img src="images/night.jpg" alt="Fuel station in Sulaymaniyah at night" data-i18n-alt="alt.night" class="aspect-[4/3] w-full object-cover" />
                     <div class="px-1 py-6">
-                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-gold">Fuel stations</p>
-                        <h3 class="mt-2 font-display text-3xl font-extrabold tracking-tight">Three stations</h3>
-                        <p class="mt-3 leading-relaxed text-white/80">In Sulaymaniyah. Petrol, diesel, LPG, car wash, and car service.</p>
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-gold" data-i18n="stations.kicker">Fuel stations</p>
+                        <h3 class="mt-2 font-display text-3xl font-extrabold tracking-tight" data-i18n="stations.title">Three stations</h3>
+                        <p class="mt-3 leading-relaxed text-white/80" data-i18n="stations.body">In Sulaymaniyah. Petrol, diesel, LPG, car wash, and car service.</p>
                     </div>
                 </article>
             </div>
@@ -231,26 +252,26 @@
         <section id="about" class="bg-sand">
             <div class="rise mx-auto grid max-w-6xl gap-10 px-5 py-20 sm:px-8 md:grid-cols-12 md:py-28">
                 <div class="md:col-span-4">
-                    <p class="text-sm uppercase tracking-[0.28em] text-rust">About MARS</p>
-                    <h2 class="mt-4 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl">An Iraqi firm, rooted in the Kurdistan Region.</h2>
+                    <p class="text-sm uppercase tracking-[0.28em] text-rust" data-i18n="about.kicker">About MARS</p>
+                    <h2 class="mt-4 font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl" data-i18n="about.title">An Iraqi firm, rooted in the Kurdistan Region.</h2>
                 </div>
                 <div class="space-y-6 text-lg leading-relaxed text-ink/80 md:col-span-8">
-                    <p>Established in 2007 in the Kurdistan Region of Iraq, MARS is an Iraqi firm with a broad presence in the oil and petroleum products sector. The firm’s activities span oil transportation and distribution, the import and export of petroleum products, and the operation of a chain of fuel stations.</p>
-                    <p>With experience across multiple areas of the petroleum supply chain, MARS is involved in oil projects throughout the Kurdistan Region and the rest of Iraq. Its work connects the transportation and movement of oil products with their distribution and availability to the market. Through its diverse activities, the firm serves commercial partners and customers across Iraq’s energy sector.</p>
-                    <p>Since its establishment, MARS has continued to build its role in Iraq’s oil industry, combining its regional roots with operations that extend across the country.</p>
-                    <p>The firm’s main work is buying and selling in the petroleum sector. It runs fuel-station chains in Sulaymaniyah, operates its own storage station, and works both inside Iraq and outside it.</p>
+                    <p data-i18n="about.p1">Established in 2007 in the Kurdistan Region of Iraq, MARS is an Iraqi firm with a broad presence in the oil and petroleum products sector. The firm’s activities span oil transportation and distribution, the import and export of petroleum products, and the operation of a chain of fuel stations.</p>
+                    <p data-i18n="about.p2">With experience across multiple areas of the petroleum supply chain, MARS is involved in oil projects throughout the Kurdistan Region and the rest of Iraq. Its work connects the transportation and movement of oil products with their distribution and availability to the market. Through its diverse activities, the firm serves commercial partners and customers across Iraq’s energy sector.</p>
+                    <p data-i18n="about.p3">Since its establishment, MARS has continued to build its role in Iraq’s oil industry, combining its regional roots with operations that extend across the country.</p>
+                    <p data-i18n="about.p4">The firm’s main work is buying and selling in the petroleum sector. It runs fuel-station chains in Sulaymaniyah, operates its own storage station, and works both inside Iraq and outside it.</p>
                     <div class="grid gap-8 border-t border-ink/15 pt-8 sm:grid-cols-3 sm:gap-6">
                         <div>
-                            <h3 class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Oil terminals</h3>
-                            <p class="mt-3 text-base leading-relaxed">Fuel is received in bulk, kept in storage tanks by product, and loaded through a rack into road tankers for stations, customers, and export. MARS does this alongside the storage station it already runs, inside Iraq and outside it.</p>
+                            <h3 class="text-xs font-medium uppercase tracking-[0.22em] text-rust" data-i18n="about.terminals.title">Oil terminals</h3>
+                            <p class="mt-3 text-base leading-relaxed" data-i18n="about.terminals.body">Fuel is received in bulk, kept in storage tanks by product, and loaded through a rack into road tankers for stations, customers, and export. MARS does this alongside the storage station it already runs, inside Iraq and outside it.</p>
                         </div>
                         <div>
-                            <h3 class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Governmental contracts</h3>
-                            <p class="mt-3 text-base leading-relaxed">A public assignment to supply fuel on fixed terms: the product, the quantity, the places it must reach, and the quality it must meet. MARS carries that through, from sourcing and transport to handover, across the Kurdistan Region and the rest of Iraq.</p>
+                            <h3 class="text-xs font-medium uppercase tracking-[0.22em] text-rust" data-i18n="about.gov.title">Governmental contracts</h3>
+                            <p class="mt-3 text-base leading-relaxed" data-i18n="about.gov.body">A public assignment to supply fuel on fixed terms: the product, the quantity, the places it must reach, and the quality it must meet. MARS carries that through, from sourcing and transport to handover, across the Kurdistan Region and the rest of Iraq.</p>
                         </div>
                         <div>
-                            <h3 class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Logistical contracts</h3>
-                            <p class="mt-3 text-base leading-relaxed">The agreement that moves petroleum products from where they are held to where they are needed: the schedule, tanker transport, time in storage, and delivery. For MARS this joins import and export with the Sulaymaniyah station chains and with work outside Iraq.</p>
+                            <h3 class="text-xs font-medium uppercase tracking-[0.22em] text-rust" data-i18n="about.log.title">Logistical contracts</h3>
+                            <p class="mt-3 text-base leading-relaxed" data-i18n="about.log.body">The agreement that moves petroleum products from where they are held to where they are needed: the schedule, tanker transport, time in storage, and delivery. For MARS this joins import and export with the Sulaymaniyah station chains and with work outside Iraq.</p>
                         </div>
                     </div>
                 </div>
@@ -259,40 +280,40 @@
 
         <section id="work" class="bg-ink text-paper">
             <div class="mx-auto max-w-6xl px-5 pt-20 pb-32 sm:px-8 md:pt-28 lg:pr-36 lg:pb-28">
-                <p class="text-sm uppercase tracking-[0.28em] text-rust">Work</p>
+                <p class="text-sm uppercase tracking-[0.28em] text-rust" data-i18n="work.kicker">Work</p>
                 <div id="chapter-oil" data-chapter-block="oil" class="mt-12">
-                    <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust">Import and export</p>
-                    <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">Oil and commodities</h2>
+                    <p class="text-xs font-medium uppercase tracking-[0.22em] text-rust" data-i18n="oil.kicker">Import and export</p>
+                    <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl" data-i18n="oil.title">Oil and commodities</h2>
                     <div class="mt-6 grid gap-3 sm:grid-cols-3">
                         <button type="button" data-firm="oil" class="group relative overflow-hidden text-left">
-                            <img src="images/oil-depot.jpg" alt="Aerial view of the MARS oil depot, tanks, and tanker trucks" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/oil-depot.jpg" alt="Aerial view of the MARS oil depot, tanks, and tanker trucks" data-i18n-alt="alt.depot" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                         <button type="button" data-firm="oil" class="group relative overflow-hidden text-left">
-                            <img src="images/oil-loading.jpg" alt="Tanker truck at the loading bays" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/oil-loading.jpg" alt="Tanker truck at the loading bays" data-i18n-alt="alt.bays" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                         <button type="button" data-firm="oil" class="group relative overflow-hidden text-left">
-                            <img src="images/oil-tanker.jpg" alt="Fuel tanker at the depot at sunset" class="aspect-[4/3] w-full object-cover object-[center_40%] transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/oil-tanker.jpg" alt="Fuel tanker at the depot at sunset" data-i18n-alt="alt.sunset" class="aspect-[4/3] w-full object-cover object-[center_40%] transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                     </div>
                 </div>
                 <div id="chapter-stations" data-chapter-block="stations" class="mt-16 sm:mt-24">
-                    <p class="text-xs font-medium uppercase tracking-[0.22em] text-gold">Fuel stations</p>
-                    <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl">Three stations</h2>
+                    <p class="text-xs font-medium uppercase tracking-[0.22em] text-gold" data-i18n="stations.kicker">Fuel stations</p>
+                    <h2 class="mt-3 font-display text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl" data-i18n="stations.title">Three stations</h2>
                     <div class="mt-6 grid gap-3 sm:grid-cols-3">
                         <button type="button" data-firm="stations" class="group relative overflow-hidden text-left">
-                            <img src="images/night.jpg" alt="Fuel station lit at night" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/night.jpg" alt="Fuel station lit at night" data-i18n-alt="alt.night2" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                         <button type="button" data-firm="stations" class="group relative overflow-hidden text-left">
-                            <img src="images/facade.jpg" alt="Concrete facade of a fuel station" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/facade.jpg" alt="Concrete facade of a fuel station" data-i18n-alt="alt.facade" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                         <button type="button" data-firm="stations" class="group relative overflow-hidden text-left">
-                            <img src="images/forecourt.jpg" alt="Forecourt with the LPG lane and fuel pumps" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/forecourt.jpg" alt="Forecourt with the LPG lane and fuel pumps" data-i18n-alt="alt.forecourt" class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                         <button type="button" data-firm="stations" class="group relative overflow-hidden text-left">
-                            <img src="images/goizha.jpg?v=3" alt="Fuel station canopy and pumps" class="aspect-[4/3] w-full object-cover object-[center_62%] transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/goizha.jpg?v=3" alt="Fuel station canopy and pumps" data-i18n-alt="alt.canopy" class="aspect-[4/3] w-full object-cover object-[center_62%] transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                         <button type="button" data-firm="stations" class="group relative overflow-hidden text-left">
-                            <img src="images/bakhtyary.jpg?v=3" alt="Fuel pumps under a station canopy" class="aspect-[4/3] w-full object-cover object-[center_78%] transition duration-500 group-hover:scale-[1.03]" />
+                            <img src="images/bakhtyary.jpg?v=3" alt="Fuel pumps under a station canopy" data-i18n-alt="alt.pumps" class="aspect-[4/3] w-full object-cover object-[center_78%] transition duration-500 group-hover:scale-[1.03]" />
                         </button>
                     </div>
                 </div>
@@ -303,7 +324,7 @@
     <footer id="contact" class="border-t border-white/10 bg-ink text-paper">
         <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
             <div>
-                <p class="text-sm uppercase tracking-[0.28em] text-rust">Contact</p>
+                <p class="text-sm uppercase tracking-[0.28em] text-rust" data-i18n="nav.contact">Contact</p>
                 <a href="#top" class="mt-5 inline-flex items-center gap-3" aria-label="MARS Iraq Group">
                     <svg class="h-12 w-9 shrink-0" viewBox="0 0 64 80" aria-hidden="true">
                         <path fill="#C12B03" d="M32 2C32 2 6 36 6 52a26 26 0 0 0 52 0C58 36 32 2 32 2z" />
@@ -311,28 +332,211 @@
                     </svg>
                     <span class="font-display text-5xl font-extrabold leading-none tracking-[-0.05em]">MARS</span>
                 </a>
-                <p class="mt-5 text-lg leading-relaxed text-white/70">MARS Iraq Group<br />Sulaymaniyah, Kurdistan Region of Iraq</p>
+                <p class="mt-5 text-lg leading-relaxed text-white/70"><span data-i18n="footer.name">MARS Iraq Group</span><br /><span data-i18n="footer.place">Sulaymaniyah, Kurdistan Region of Iraq</span></p>
             </div>
         </div>
     </footer>
 
     <nav id="chapters" aria-label="Firms">
-        <a href="#chapter-oil" data-chapter="oil">Oil</a>
-        <a href="#chapter-stations" data-chapter="stations">Stations</a>
+        <a href="#chapter-oil" data-chapter="oil" data-i18n="chapters.oil">Oil</a>
+        <a href="#chapter-stations" data-chapter="stations" data-i18n="chapters.stations">Stations</a>
     </nav>
 
     <dialog id="lightbox" aria-label="Photograph">
         <div class="flex h-full flex-col items-center justify-center gap-4 p-4 sm:p-8">
             <img id="light-img" alt="" class="max-w-full object-contain" />
             <div class="flex gap-2">
-                <button type="button" id="light-prev" class="border border-white/30 px-4 py-2 text-xs uppercase tracking-[0.14em] text-white">Previous</button>
-                <button type="button" id="light-next" class="border border-white/30 px-4 py-2 text-xs uppercase tracking-[0.14em] text-white">Next</button>
-                <button type="button" id="light-close" class="bg-white px-4 py-2 text-xs uppercase tracking-[0.14em] text-ink">Close</button>
+                <button type="button" id="light-prev" class="border border-white/30 px-4 py-2 text-xs uppercase tracking-[0.14em] text-white" data-i18n="light.prev">Previous</button>
+                <button type="button" id="light-next" class="border border-white/30 px-4 py-2 text-xs uppercase tracking-[0.14em] text-white" data-i18n="light.next">Next</button>
+                <button type="button" id="light-close" class="bg-white px-4 py-2 text-xs uppercase tracking-[0.14em] text-ink" data-i18n="light.close">Close</button>
             </div>
         </div>
     </dialog>
 
     <script>
+        const I18N = {
+            en: {
+                "meta.title": "MARS Iraq Group · Kurdistan Region",
+                "skip": "Skip to content",
+                "nav.about": "About",
+                "nav.firms": "Firms",
+                "nav.work": "Work",
+                "nav.contact": "Contact",
+                "hero.eyebrow": "Kurdistan Region of Iraq · Since 2007",
+                "hero.title": "Oil and petroleum, across Iraq.",
+                "hero.lead": "MARS Iraq Group moves petroleum products, imports and exports them, and runs fuel stations in Sulaymaniyah. The work starts in the Kurdistan Region and continues across the country.",
+                "hero.cta": "The firms",
+                "firms.kicker": "Firms",
+                "firms.title": "Two firms, one group.",
+                "oil.kicker": "Import and export",
+                "oil.title": "Oil and commodities",
+                "oil.body": "Transportation and distribution, and the import and export of petroleum products across Iraq.",
+                "stations.kicker": "Fuel stations",
+                "stations.title": "Three stations",
+                "stations.body": "In Sulaymaniyah. Petrol, diesel, LPG, car wash, and car service.",
+                "about.kicker": "About MARS",
+                "about.title": "An Iraqi firm, rooted in the Kurdistan Region.",
+                "about.p1": "Established in 2007 in the Kurdistan Region of Iraq, MARS is an Iraqi firm with a broad presence in the oil and petroleum products sector. The firm’s activities span oil transportation and distribution, the import and export of petroleum products, and the operation of a chain of fuel stations.",
+                "about.p2": "With experience across multiple areas of the petroleum supply chain, MARS is involved in oil projects throughout the Kurdistan Region and the rest of Iraq. Its work connects the transportation and movement of oil products with their distribution and availability to the market. Through its diverse activities, the firm serves commercial partners and customers across Iraq’s energy sector.",
+                "about.p3": "Since its establishment, MARS has continued to build its role in Iraq’s oil industry, combining its regional roots with operations that extend across the country.",
+                "about.p4": "The firm’s main work is buying and selling in the petroleum sector. It runs fuel-station chains in Sulaymaniyah, operates its own storage station, and works both inside Iraq and outside it.",
+                "about.terminals.title": "Oil terminals",
+                "about.terminals.body": "Fuel is received in bulk, kept in storage tanks by product, and loaded through a rack into road tankers for stations, customers, and export. MARS does this alongside the storage station it already runs, inside Iraq and outside it.",
+                "about.gov.title": "Governmental contracts",
+                "about.gov.body": "A public assignment to supply fuel on fixed terms: the product, the quantity, the places it must reach, and the quality it must meet. MARS carries that through, from sourcing and transport to handover, across the Kurdistan Region and the rest of Iraq.",
+                "about.log.title": "Logistical contracts",
+                "about.log.body": "The agreement that moves petroleum products from where they are held to where they are needed: the schedule, tanker transport, time in storage, and delivery. For MARS this joins import and export with the Sulaymaniyah station chains and with work outside Iraq.",
+                "work.kicker": "Work",
+                "footer.name": "MARS Iraq Group",
+                "footer.place": "Sulaymaniyah, Kurdistan Region of Iraq",
+                "chapters.oil": "Oil",
+                "chapters.stations": "Stations",
+                "light.prev": "Previous",
+                "light.next": "Next",
+                "light.close": "Close",
+                "alt.yard": "Tanker truck in the MARS depot yard",
+                "alt.loading": "Tanker at the MARS loading bays",
+                "alt.night": "Fuel station in Sulaymaniyah at night",
+                "alt.depot": "Aerial view of the MARS oil depot, tanks, and tanker trucks",
+                "alt.bays": "Tanker truck at the loading bays",
+                "alt.sunset": "Fuel tanker at the depot at sunset",
+                "alt.night2": "Fuel station lit at night",
+                "alt.facade": "Concrete facade of a fuel station",
+                "alt.forecourt": "Forecourt with the LPG lane and fuel pumps",
+                "alt.canopy": "Fuel station canopy and pumps",
+                "alt.pumps": "Fuel pumps under a station canopy"
+            },
+            ckb: {
+                "meta.title": "گروپی مارس عێراق · هەرێمی کوردستان",
+                "skip": "بڕۆ بۆ ناوەڕۆک",
+                "nav.about": "دەربارە",
+                "nav.firms": "کۆمپانیاکان",
+                "nav.work": "کار",
+                "nav.contact": "پەیوەندی",
+                "hero.eyebrow": "هەرێمی کوردستانی عێراق · لە 2007ەوە",
+                "hero.title": "نەوت و بەرهەمە نەوتییەکان، لە سەرانسەری عێراق.",
+                "hero.lead": "گروپی مارس عێراق بەرهەمە نەوتییەکان دەگوازێتەوە، هاوردە و هەناردەیان دەکات، و وێستگەی سووتەمەنی لە سلێمانی بەڕێوە دەبات. کارەکە لە هەرێمی کوردستان دەست پێ دەکات و لە سەرانسەری وڵات بەردەوام دەبێت.",
+                "hero.cta": "کۆمپانیاکان",
+                "firms.kicker": "کۆمپانیاکان",
+                "firms.title": "دوو کۆمپانیا، یەک گروپ.",
+                "oil.kicker": "هاوردە و هەناردە",
+                "oil.title": "نەوت و کاڵا",
+                "oil.body": "گواستنەوە و دابەشکردن، و هاوردە و هەناردەی بەرهەمە نەوتییەکان لە سەرانسەری عێراق.",
+                "stations.kicker": "وێستگەکانی سووتەمەنی",
+                "stations.title": "سێ وێستگە",
+                "stations.body": "لە سلێمانی. بەنزین، دیزڵ، غازی شل، شوشتنی ئۆتۆمبێل، و خزمەتگوزاری ئۆتۆمبێل.",
+                "about.kicker": "دەربارەی مارس",
+                "about.title": "کۆمپانیایەکی عێراقی، ڕەگەکانی لە هەرێمی کوردستانە.",
+                "about.p1": "مارس لە ساڵی 2007 لە هەرێمی کوردستانی عێراق دامەزراوە. کۆمپانیایەکی عێراقییە و ئامادەییەکی فراوانی لە کەرتی نەوت و بەرهەمە نەوتییەکاندا هەیە. چالاکییەکانی گواستنەوە و دابەشکردنی نەوت، هاوردە و هەناردەی بەرهەمە نەوتییەکان، و بەڕێوەبردنی زنجیرەیەک وێستگەی سووتەمەنی دەگرێتەوە.",
+                "about.p2": "بە ئەزموون لە چەند بەشێکی زنجیرەی دابینکردنی نەوت، مارس لە پڕۆژە نەوتییەکانی هەرێمی کوردستان و باقی عێراق بەشدارە. کارەکەی گواستنەوە و جووڵەی بەرهەمە نەوتییەکان بە دابەشکردن و ئامادەبوونیان لە بازاڕدا دەبەستێتەوە. لە ڕێگەی چالاکییە جیاوازەکانییەوە، کۆمپانیاکە هاوبەشە بازرگانییەکان و کڕیاران لە کەرتی وزەی عێراق خزمەت دەکات.",
+                "about.p3": "لە دامەزراندنییەوە، مارس بەردەوام بووە لە بنیاتنانی ڕۆڵی خۆی لە پیشەسازی نەوتی عێراق، و ڕەگە هەرێمییەکانی لەگەڵ کارێکدا کۆکردووەتەوە کە لە سەرانسەری وڵات درێژ دەبێتەوە.",
+                "about.p4": "کاری سەرەکی کۆمپانیاکە کڕین و فرۆشتنە لە کەرتی نەوت. زنجیرە وێستگەی سووتەمەنی لە سلێمانی بەڕێوە دەبات، وێستگەیەکی هەڵگرتنی تایبەت بە خۆی هەیە، و لە ناو عێراق و لە دەرەوەی عێراق کار دەکات.",
+                "about.terminals.title": "تێرمیناڵەکانی نەوت",
+                "about.terminals.body": "سووتەمەنی بە بڕی گەورە وەردەگیرێت، بەپێی جۆری بەرهەم لە تانکەکاندا دەهێڵرێتەوە، و لە ڕێگەی ڕەفی بارکردنەوە دەخرێتە ناو تانکەر بۆ وێستگەکان و کڕیاران و هەناردە. مارس ئەم کارە لەگەڵ وێستگەی هەڵگرتنەکەی خۆی دەکات، لە ناو عێراق و لە دەرەوەی.",
+                "about.gov.title": "گرێبەستە حکومییەکان",
+                "about.gov.body": "ئەرکێکی گشتی بۆ دابینکردنی سووتەمەنی بە مەرجی دیاریکراو: جۆری بەرهەم، بڕ، ئەو شوێنانەی دەبێت بگاتێ، و کوالێتییەکەی. مارس ئەم ئەرکە لە دابینکردن و گواستنەوەوە تا گەیاندن جێبەجێ دەکات، لە هەرێمی کوردستان و باقی عێراق.",
+                "about.log.title": "گرێبەستە لۆجستییەکان",
+                "about.log.body": "ئەو ڕێکەوتنەی بەرهەمە نەوتییەکان لە شوێنی هەڵگرتنەوە دەگوازێتەوە بۆ ئەو شوێنەی پێویستن: خشتە، گواستنەوە بە تانکەر، کاتی هەڵگرتن، و گەیاندن. بۆ مارس ئەم کارە هاوردە و هەناردە بە زنجیرە وێستگەکانی سلێمانی و کار لە دەرەوەی عێراق دەبەستێتەوە.",
+                "work.kicker": "کار",
+                "footer.name": "گروپی مارس عێراق",
+                "footer.place": "سلێمانی، هەرێمی کوردستانی عێراق",
+                "chapters.oil": "نەوت",
+                "chapters.stations": "وێستگەکان",
+                "light.prev": "پێشوو",
+                "light.next": "دواتر",
+                "light.close": "داخستن",
+                "alt.yard": "تانکەرێک لە حەوشەی کۆگای مارس",
+                "alt.loading": "تانکەر لە بەردەم شوێنی بارکردنی مارس",
+                "alt.night": "وێستگەی سووتەمەنی لە سلێمانی لە شەودا",
+                "alt.depot": "دیمەنێکی ئاسمانیی کۆگای نەوتی مارس، تانکەکان و تانکەرەکان",
+                "alt.bays": "تانکەر لە شوێنی بارکردن",
+                "alt.sunset": "تانکەری سووتەمەنی لە کۆگا لە کاتی ئاوابوون",
+                "alt.night2": "وێستگەی سووتەمەنی ڕووناککراوە لە شەودا",
+                "alt.facade": "ڕووی کۆنکرێتی وێستگەیەکی سووتەمەنی",
+                "alt.forecourt": "حەوشەی وێستگە لەگەڵ ڕێڕەوی غاز و پەمپەکان",
+                "alt.canopy": "سایەوانی وێستگە و پەمپەکان",
+                "alt.pumps": "پەمپی سووتەمەنی لە ژێر سایەوانی وێستگە"
+            },
+            ar: {
+                "meta.title": "مجموعة مارس العراق · إقليم كردستان",
+                "skip": "انتقل إلى المحتوى",
+                "nav.about": "عن المجموعة",
+                "nav.firms": "الشركتان",
+                "nav.work": "الأعمال",
+                "nav.contact": "التواصل",
+                "hero.eyebrow": "إقليم كردستان العراق · منذ 2007",
+                "hero.title": "النفط والمشتقات، عبر العراق.",
+                "hero.lead": "تنقل مجموعة مارس العراق المشتقات النفطية، وتستوردها وتصدّرها، وتدير محطات وقود في السليمانية. يبدأ العمل من إقليم كردستان ويمتد عبر البلاد.",
+                "hero.cta": "الشركتان",
+                "firms.kicker": "الشركتان",
+                "firms.title": "شركتان، مجموعة واحدة.",
+                "oil.kicker": "الاستيراد والتصدير",
+                "oil.title": "النفط والسلع",
+                "oil.body": "النقل والتوزيع، واستيراد المشتقات النفطية وتصديرها عبر العراق.",
+                "stations.kicker": "محطات الوقود",
+                "stations.title": "ثلاث محطات",
+                "stations.body": "في السليمانية. بنزين، ديزل، غاز مسال، غسيل سيارات، وخدمة سيارات.",
+                "about.kicker": "عن مارس",
+                "about.title": "شركة عراقية، جذورها في إقليم كردستان.",
+                "about.p1": "تأسست مارس عام 2007 في إقليم كردستان العراق، وهي شركة عراقية ذات حضور واسع في قطاع النفط والمشتقات النفطية. تشمل أعمال الشركة نقل النفط وتوزيعه، واستيراد المشتقات النفطية وتصديرها، وإدارة سلسلة من محطات الوقود.",
+                "about.p2": "بخبرة تمتد عبر حلقات سلسلة إمداد النفط، تشارك مارس في مشاريع نفطية في إقليم كردستان وبقية العراق. يربط عملها نقل المنتجات النفطية وحركتها بتوزيعها وتوفرها في السوق. ومن خلال أنشطتها المتنوعة تخدم الشركة شركاءها التجاريين والزبائن في قطاع الطاقة في العراق.",
+                "about.p3": "منذ تأسيسها، واصلت مارس بناء دورها في صناعة النفط في العراق، جامعة بين جذورها في الإقليم وعمليات تمتد عبر البلاد.",
+                "about.p4": "العمل الرئيسي للشركة هو البيع والشراء في قطاع النفط. تدير سلاسل محطات وقود في السليمانية، وتشغّل محطة خزن خاصة بها، وتعمل داخل العراق وخارجه.",
+                "about.terminals.title": "محطات النفط",
+                "about.terminals.body": "يُستلم الوقود بالجملة، ويُحفظ في خزانات حسب نوع المنتج، ثم يُحمّل عبر رصيف التعبئة في صهاريج إلى المحطات والزبائن والتصدير. تقوم مارس بهذا العمل إلى جانب محطة الخزن التي تديرها، داخل العراق وخارجه.",
+                "about.gov.title": "العقود الحكومية",
+                "about.gov.body": "تكليف عام بتوريد الوقود وفق شروط محددة: نوع المنتج، والكمية، والأماكن التي يجب أن يصل إليها، والجودة المطلوبة. تنفّذ مارس هذا التكليف من التوريد والنقل حتى التسليم، في إقليم كردستان وبقية العراق.",
+                "about.log.title": "العقود اللوجستية",
+                "about.log.body": "الاتفاق الذي ينقل المشتقات النفطية من مكان حفظها إلى مكان الحاجة إليها: الجدول، والنقل بالصهاريج، ومدة الخزن، والتسليم. بالنسبة إلى مارس، يجمع هذا العمل بين الاستيراد والتصدير وسلاسل المحطات في السليمانية والعمل خارج العراق.",
+                "work.kicker": "الأعمال",
+                "footer.name": "مجموعة مارس العراق",
+                "footer.place": "السليمانية، إقليم كردستان العراق",
+                "chapters.oil": "النفط",
+                "chapters.stations": "المحطات",
+                "light.prev": "السابق",
+                "light.next": "التالي",
+                "light.close": "إغلاق",
+                "alt.yard": "شاحنة صهريج في ساحة مستودع مارس",
+                "alt.loading": "صهريج عند أرصفة التحميل",
+                "alt.night": "محطة وقود في السليمانية ليلاً",
+                "alt.depot": "منظر جوي لمستودع مارس والخزانات وشاحنات الصهريج",
+                "alt.bays": "شاحنة صهريج عند أرصفة التحميل",
+                "alt.sunset": "صهريج وقود في المستودع عند الغروب",
+                "alt.night2": "محطة وقود مضاءة ليلاً",
+                "alt.facade": "واجهة خرسانية لمحطة وقود",
+                "alt.forecourt": "ساحة المحطة مع مسار الغاز والمضخات",
+                "alt.canopy": "مظلة المحطة والمضخات",
+                "alt.pumps": "مضخات وقود تحت مظلة المحطة"
+            }
+        };
+        function applyLang(lang) {
+            const pack = I18N[lang] || I18N.en;
+            const rtl = lang === "ar" || lang === "ckb";
+            document.documentElement.lang = lang === "ckb" ? "ckb" : lang;
+            document.documentElement.dir = rtl ? "rtl" : "ltr";
+            document.title = pack["meta.title"];
+            document.querySelectorAll("[data-i18n]").forEach((el) => {
+                const value = pack[el.getAttribute("data-i18n")];
+                if (value != null) el.textContent = value;
+            });
+            document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+                const value = pack[el.getAttribute("data-i18n-alt")];
+                if (value != null) el.alt = value;
+            });
+            document.querySelectorAll("[data-lang]").forEach((btn) => {
+                const on = btn.getAttribute("data-lang") === lang;
+                btn.classList.toggle("lang-on", on);
+                btn.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+            try { localStorage.setItem("mars-lang", lang); } catch (e) {}
+        }
+        document.querySelectorAll("[data-lang]").forEach((btn) => {
+            btn.addEventListener("click", () => applyLang(btn.getAttribute("data-lang")));
+        });
+        let saved = "en";
+        try { saved = localStorage.getItem("mars-lang") || "en"; } catch (e) {}
+        applyLang(I18N[saved] ? saved : "en");
+
         const intro = document.getElementById("intro");
         if (intro) intro.addEventListener("animationend", (event) => {
             if (event.animationName === "intro-leave") intro.remove();
